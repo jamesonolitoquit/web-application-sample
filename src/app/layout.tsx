@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Expense Tracker - Jameson A. Olitoquit",
   description: "A sample expense tracking web application built with React and TypeScript. Track your daily expenses with persistent storage and beautiful UI.",
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
