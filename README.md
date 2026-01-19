@@ -1,4 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Expense Tracker - Sample Website
+
+**Designed by Jameson A. Olitoquit**
+
+This is a sample Expense Tracker web application built with [Next.js](https://nextjs.org), demonstrating problem-solving, state management, and client-side logic. It uses React hooks for state management and localStorage for persistence, running entirely in the browser without any server dependencies.
+
+## Features
+
+- Add expenses with amount, description, date, and optional category
+- View list of all expenses
+- Delete expenses
+- Summary of total expenses
+- Persistent storage using localStorage
+- Fully offline-capable
+
+## Tech Stack
+
+- **Framework:** Next.js with App Router
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **State Management:** React useState and useEffect
+- **Persistence:** Browser localStorage
 
 ## Getting Started
 
