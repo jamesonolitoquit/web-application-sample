@@ -28,23 +28,23 @@ interface ExpenseListProps {
 const ExpenseList: React.FC<ExpenseListProps> = ({ expenses, onDeleteExpense }) => {
   return (
     <div className="mb-6">
-      <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Expenses</h2>
+      <h2 className="text-xl font-bold mb-4 text-gray-900">Expenses</h2>
       {expenses.length === 0 ? (
-        <p className="text-gray-600 dark:text-gray-400">No expenses yet.</p>
+        <p className="text-gray-600">No expenses yet.</p>
       ) : (
         <ul className="space-y-2">
           {expenses.map((expense) => (
-            <li key={expense.id} className="p-4 border rounded bg-white dark:bg-gray-800 dark:border-gray-700 shadow-sm">
+            <li key={expense.id} className="p-4 border rounded bg-white shadow-sm">
               <div>
-                <p className="font-semibold text-gray-900 dark:text-white">{expense.description}</p>
-                <p className="text-sm text-gray-700 dark:text-gray-300">
+                <p className="font-semibold text-gray-900">{expense.description}</p>
+                <p className="text-sm text-gray-800">
                   ${expense.amount.toFixed(2)} - {new Date(expense.date).toLocaleDateString()}
                   {expense.category && ` - ${expense.category}`}
                 </p>
               </div>
               <button
                 onClick={() => onDeleteExpense(expense.id)}
-                className="bg-red-500 hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 text-white px-3 py-1 rounded transition-colors"
+                className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition-colors"
               >
                 Delete
               </button>

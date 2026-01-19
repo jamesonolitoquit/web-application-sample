@@ -30,10 +30,10 @@ const Summary: React.FC<SummaryProps> = ({ expenses }) => {
   const total = getTotal();
 
   return (
-    <div className="mb-6 p-4 border rounded bg-white dark:bg-gray-800 dark:border-gray-700 shadow-sm">
-      <h2 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">Summary</h2>
-      <p className="text-lg text-gray-800 dark:text-gray-200">Total Expenses: <span className="font-semibold text-gray-900 dark:text-white">${total.toFixed(2)}</span></p>
-      <p className="text-gray-800 dark:text-gray-200">Number of Expenses: {expenses.length}</p>
+    <div className="mb-6 p-4 border rounded bg-white shadow-sm">
+      <h2 className="text-xl font-bold mb-2 text-gray-900">Summary</h2>
+      <p className="text-lg text-gray-800">Total Expenses: <span className="font-semibold text-gray-900">${total.toFixed(2)}</span></p>
+      <p className="text-gray-800">Number of Expenses: {expenses.length}</p>
     </div>
   );
 };

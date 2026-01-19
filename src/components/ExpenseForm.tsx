@@ -47,49 +47,49 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ onAddExpense }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-6 p-4 border rounded bg-white dark:bg-gray-800 dark:border-gray-700 shadow-sm">
-      <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Add Expense</h2>
+    <form onSubmit={handleSubmit} className="mb-6 p-4 border rounded bg-white shadow-sm">
+      <h2 className="text-xl font-bold mb-4 text-gray-900">Add Expense</h2>
       <div className="mb-2">
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Amount</label>
+        <label className="block text-sm font-medium text-gray-700">Amount</label>
         <input
           type="number"
           step="0.01"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          className="w-full p-2 border rounded bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+          className="w-full p-2 border rounded bg-white text-gray-900 focus:ring-2 focus:ring-blue-500"
           required
         />
       </div>
       <div className="mb-2">
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
+        <label className="block text-sm font-medium text-gray-700">Description</label>
         <input
           type="text"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="w-full p-2 border rounded bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+          className="w-full p-2 border rounded bg-white text-gray-900 focus:ring-2 focus:ring-blue-500"
           required
         />
       </div>
       <div className="mb-2">
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Date</label>
+        <label className="block text-sm font-medium text-gray-700">Date</label>
         <input
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          className="w-full p-2 border rounded bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+          className="w-full p-2 border rounded bg-white text-gray-900 focus:ring-2 focus:ring-blue-500"
           required
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Category (Optional)</label>
+        <label className="block text-sm font-medium text-gray-700">Category (Optional)</label>
         <input
           type="text"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="w-full p-2 border rounded bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+          className="w-full p-2 border rounded bg-white text-gray-900 focus:ring-2 focus:ring-blue-500"
         />
       </div>
-      <button type="submit" className="bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors">
+      <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors">
         Add Expense
       </button>
     </form>
