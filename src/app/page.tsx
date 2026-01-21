@@ -53,6 +53,9 @@ export default function Home() {
           <h1 className="text-4xl font-bold text-gray-900">Expense Tracker</h1>
           <p className="text-gray-800 mt-2 font-medium">Sample Website - Designed by Jameson A. Olitoquit</p>
         </header>
+        <Summary expenses={expenses} />
+        <ExpenseForm onAddExpense={addExpense} />
+        <ExpenseList expenses={expenses} onDeleteExpense={deleteExpense} />
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">About This App</h2>
           <p className="text-gray-800 leading-relaxed">
@@ -61,9 +64,6 @@ export default function Home() {
             date tracking, and summary calculations to help you stay on top of your spending habits.
           </p>
         </div>
-        <Summary expenses={expenses} />
-        <ExpenseForm onAddExpense={addExpense} />
-        <ExpenseList expenses={expenses} onDeleteExpense={deleteExpense} />
       </div>
     </div>
   );
