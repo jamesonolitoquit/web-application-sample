@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Expense Tracker - Jameson A. Olitoquit",
-  description: "A sample expense tracking web application built with React and TypeScript. Track your daily expenses with persistent storage and beautiful UI.",
+  title: "Financial Tools Suite - Jameson A. Olitoquit",
+  description: "A comprehensive suite of financial tools including expense tracker, budget planner, loan calculator, savings goal tracker, currency converter, and investment calculator. Built with React and TypeScript.",
   icons: {
     icon: '/favicon.svg',
   },
@@ -31,6 +31,17 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <footer className="bg-gray-900 text-white py-6 mt-12">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <p className="text-sm">
+              Built by <span className="font-semibold">Jameson A. Olitoquit</span> | 
+              Contact: <a href="mailto:jameson.olitoquit@gmail.com" className="text-blue-400 hover:text-blue-300">jameson.olitoquit@gmail.com</a>
+            </p>
+            <p className="text-xs text-gray-400 mt-2">
+              Portfolio Demo - Financial Tools Suite
+            </p>
+          </div>
+        </footer>
       </body>
     </html>
   );
