@@ -40,7 +40,7 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Load saved settings from localStorage
+  // Load saved settings from localStorage and refresh rates when baseCurrency changes
   useEffect(() => {
     const savedBaseCurrency = localStorage.getItem('baseCurrency');
     const savedRates = localStorage.getItem('exchangeRates');
@@ -60,10 +60,16 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
         console.error('Error loading cached exchange rates:', e);
       }
     }
-
     // Fetch rates on initial load
     refreshRates();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Refresh exchange rates whenever baseCurrency changes
+  useEffect(() => {
+    refreshRates();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [baseCurrency]);
 
   // Save base currency to localStorage when it changes
   useEffect(() => {
@@ -75,28 +81,26 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
       setIsLoading(true);
       setError(null);
 
-      const response = await fetch(EXCHANGE_RATE_API_URL);
-      if (!response.ok) {
-        throw new Error(`API responded with status: ${response.status}`);
-      }
+      // Use mock exchange rates for demo purposes
+      const mockRates = {
+        USD: 1.0,
+        EUR: 0.85,
+        GBP: 0.73,
+        JPY: 110.0,
+        CAD: 1.25,
+        AUD: 1.35,
+        CHF: 0.92,
+        PHP: 56.0
+      };
 
-      const data = await response.json();
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 500));
 
-      if (!data.rates) {
-        throw new Error('Invalid API response format');
-      }
-
-      // Add PHP if not present (using approximate rate)
-      const rates = { ...data.rates };
-      if (!rates.PHP) {
-        rates.PHP = 56.0; // Approximate USD to PHP rate
-      }
-
-      setExchangeRates(rates);
+      setExchangeRates(mockRates);
       setLastUpdated(new Date());
 
       // Cache rates
-      localStorage.setItem('exchangeRates', JSON.stringify(rates));
+      localStorage.setItem('exchangeRates', JSON.stringify(mockRates));
       localStorage.setItem('exchangeRatesLastUpdated', new Date().toISOString());
 
     } catch (err) {

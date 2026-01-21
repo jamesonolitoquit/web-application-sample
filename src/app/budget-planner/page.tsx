@@ -145,99 +145,100 @@ export default function BudgetPlanner() {
   const totalRemaining = totalBudgeted - totalSpent;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-6">
-          <Link
-            href="/"
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
-          >
-            ← Back to Dashboard
-          </Link>
-        </div>
-
-        <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900">Budget Planner</h1>
-          <p className="text-gray-800 mt-2 font-medium">Plan and track your monthly budget</p>
-        </header>
-
-        <div className="mb-6 flex justify-center gap-4">
-          <button
-            onClick={loadExampleData}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Load Example Data
-          </button>
-          <button
-            onClick={generatePDF}
-            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-          >
-            Download PDF Report
-          </button>
-        </div>
-
-        {/* Budget Summary */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Total Budgeted</h3>
-            <p className="text-2xl font-bold text-blue-600">${totalBudgeted.toFixed(2)}</p>
+    <LayoutWithSidebar>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-8 px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-6">
+            <Link
+              href="/"
+              className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium"
+            >
+              ← Back to Dashboard
+            </Link>
           </div>
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Total Spent</h3>
-            <p className="text-2xl font-bold text-red-600">${totalSpent.toFixed(2)}</p>
-          </div>
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Remaining</h3>
-            <p className={`text-2xl font-bold ${totalRemaining >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-              ${totalRemaining.toFixed(2)}
-            </p>
-          </div>
-        </div>
 
-        {/* Add New Budget Item */}
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Add Budget Category</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <input
-              type="text"
-              placeholder="Category name"
-              value={newCategory}
-              onChange={(e) => setNewCategory(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <input
-              type="number"
-              placeholder="Budgeted amount"
-              value={newBudgeted}
-              onChange={(e) => setNewBudgeted(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              min="0"
-              step="0.01"
-            />
+          <header className="text-center mb-8">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Budget Planner</h1>
+            <p className="text-gray-800 dark:text-gray-300 mt-2 font-medium">Plan and track your monthly budget</p>
+          </header>
+
+          <div className="mb-6 flex justify-center gap-4">
             <button
-              onClick={addBudgetItem}
+              onClick={loadExampleData}
               className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
-              Add Category
+              Load Example Data
+            </button>
+            <button
+              onClick={generatePDF}
+              className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+            >
+              Download PDF Report
             </button>
           </div>
-        </div>
 
-        {/* Budget Items List */}
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Budget Categories</h2>
-          {budgetItems.length === 0 ? (
-            <p className="text-gray-600 text-center py-8">No budget categories added yet. Add your first category above.</p>
-          ) : (
-            <div className="space-y-4">
-              {budgetItems.map((item) => {
-                const remaining = item.budgeted - item.spent;
-                const isOverBudget = remaining < 0;
+          {/* Budget Summary */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 text-center">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Total Budgeted</h3>
+              <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">${totalBudgeted.toFixed(2)}</p>
+            </div>
+            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 text-center">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Total Spent</h3>
+              <p className="text-2xl font-bold text-red-600 dark:text-red-400">${totalSpent.toFixed(2)}</p>
+            </div>
+            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 text-center">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Remaining</h3>
+              <p className={`text-2xl font-bold ${totalRemaining >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                ${totalRemaining.toFixed(2)}
+              </p>
+            </div>
+          </div>
 
-                return (
-                  <div key={item.id} className="border border-gray-200 rounded-lg p-4">
-                    <div className="flex justify-between items-center mb-3">
-                      <h3 className="text-lg font-medium text-gray-900">{item.category}</h3>
+          {/* Add New Budget Item */}
+          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 mb-8">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Add Budget Category</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <input
+                type="text"
+                placeholder="Category name"
+                value={newCategory}
+                onChange={(e) => setNewCategory(e.target.value)}
+                className="px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+              />
+              <input
+                type="number"
+                placeholder="Budgeted amount"
+                value={newBudgeted}
+                onChange={(e) => setNewBudgeted(e.target.value)}
+                className="px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                min="0"
+                step="0.01"
+              />
+              <button
+                onClick={addBudgetItem}
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Add Category
+              </button>
+            </div>
+          </div>
+
+          {/* Budget Items List */}
+          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Budget Categories</h2>
+            {budgetItems.length === 0 ? (
+              <p className="text-gray-600 dark:text-gray-400 text-center py-8">No budget categories added yet. Add your first category above.</p>
+            ) : (
+              <div className="space-y-4">
+                {budgetItems.map((item) => {
+                  const remaining = item.budgeted - item.spent;
+                  const isOverBudget = remaining < 0;
+
+                  return (
+                    <div key={item.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                      <div className="flex justify-between items-center mb-3">
+                        <h3 className="text-lg font-medium text-gray-900 dark:text-white">{item.category}</h3>
                       <button
                         onClick={() => deleteBudgetItem(item.id)}
                         className="text-red-600 hover:text-red-800 font-medium"

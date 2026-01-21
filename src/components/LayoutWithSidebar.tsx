@@ -15,7 +15,7 @@ export default function LayoutWithSidebar({ children }: LayoutWithSidebarProps) 
       {/* Hamburger Menu Button */}
       <button
         onClick={() => setIsSidebarOpen(true)}
-        className="fixed top-4 left-4 z-30 p-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow lg:hidden"
+        className="fixed top-4 left-4 z-30 p-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
         aria-label="Open menu"
       >
         <svg

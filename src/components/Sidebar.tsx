@@ -91,18 +91,15 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
             {/* Theme Toggle */}
             <div className="mb-4">
-              <label className="flex items-center justify-between">
-                <span className="text-sm text-gray-700 dark:text-gray-300">Dark Mode</span>
+              <label className="flex items-center justify-between cursor-pointer">
+                <span className="text-sm text-gray-700 dark:text-gray-300">{theme === 'dark' ? 'Dark' : 'Light'} Mode</span>
                 <button
                   onClick={toggleTheme}
-                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    theme === 'dark' ? 'bg-blue-600' : 'bg-gray-200'
-                  }`}
+                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${theme === 'dark' ? 'bg-blue-600' : 'bg-gray-200'}`}
+                  aria-label="Toggle theme"
                 >
                   <span
-                    className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                      theme === 'dark' ? 'translate-x-6' : 'translate-x-1'
-                    }`}
+                    className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform duration-300 ${theme === 'dark' ? 'translate-x-5' : 'translate-x-1'}`}
                   />
                 </button>
               </label>
